@@ -12,8 +12,6 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    EditText myEditText;
-    String stringEditText;
     Button btnLogin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,17 +21,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnLogin = findViewById(R.id.btn_login);
 
         btnLogin.setOnClickListener(this);
-        EditText editText = (EditText) findViewById(R.id.input_password);
-        String value = editText.getText().toString();
 
     }
 
 
     @Override
     public void onClick(View v) {
-        EditText editText = (EditText) findViewById(R.id.input_password);
-        String value = editText.getText().toString();
-        validatePassword(value);
+        EditText passwordFromEditText = (EditText) findViewById(R.id.input_password);
+        EditText emailFromEditText = (EditText) findViewById(R.id.input_email);
+        String password = passwordFromEditText.getText().toString();
+        String email = emailFromEditText.getText().toString();
+
+        validatePassword(password,email);
         switch (v.getId())
         {
             case R.id.btn_login:
@@ -42,35 +41,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    private void validatePassword(String stringEditText) {
-        int smallChar = 0,bigChar = 0,number = 0,specialChar = 0;
-        for( int i = 0 ;i<stringEditText.length(); i++)
-        {
-            if(stringEditText.charAt(i) >= 'a' && stringEditText.charAt(i) <= 'z')
-            {
-                smallChar++;
-            }
-            if(stringEditText.charAt(i) >= 'A' && stringEditText.charAt(i) <= 'Z')
-            {
-                bigChar++;
-            }
-            if(Character.isDigit(stringEditText.charAt(i)))
-            {
-                number++;
-            }
-            else
-            {
-                specialChar++;
-            }
-        }
+    private void validatePassword(String stringEditText,String stringEditText1) {
 
-        if(smallChar == 0 || bigChar == 0 || number == 0 || specialChar == 0)
+        if(stringEditText.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{4,}$") && stringEditText1.matches("[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"))
         {
-            Toast.makeText(MainActivity.this, "Password Not Strong", Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this, "Email and Password are match with regular expression", Toast.LENGTH_SHORT).show();
         }
         else
         {
-            Toast.makeText(MainActivity.this, "Password Strong", Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this, "Either Email or Password are does not match with regular expression", Toast.LENGTH_SHORT).show();
         }
     }
 }
