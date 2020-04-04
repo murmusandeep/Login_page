@@ -20,25 +20,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         btnLogin = findViewById(R.id.btn_login);
 
-        btnLogin.setOnClickListener(this);
+        //btnLogin.setOnClickListener(this);
+        /*btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "Inside Annonymous Class", Toast.LENGTH_SHORT).show();
+            }
+        });*/
+        //btnLogin.setOnClickListener(new InnerClassClickDemo());
+        btnLogin.setOnClickListener(new ClickDemo(MainActivity.this));
 
     }
 
 
     @Override
     public void onClick(View v) {
-        EditText passwordFromEditText = (EditText) findViewById(R.id.input_password);
-        EditText emailFromEditText = (EditText) findViewById(R.id.input_email);
-        String password = passwordFromEditText.getText().toString();
-        String email = emailFromEditText.getText().toString();
-
-        validatePassword(password,email);
-        switch (v.getId())
-        {
-            case R.id.btn_login:
-                //Toast.makeText(this,value, Toast.LENGTH_LONG).show();
-            break;
-        }
+        Toast.makeText(this, "Inside MainActivity", Toast.LENGTH_SHORT).show();
     }
 
     private void validatePassword(String stringEditText,String stringEditText1) {
@@ -50,6 +47,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         else
         {
             Toast.makeText(MainActivity.this, "Either Email or Password are does not match with regular expression", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+    class InnerClassClickDemo implements View.OnClickListener {
+
+        @Override
+        public void onClick(View v) {
+            Toast.makeText(MainActivity.this, "Inside InnerClassClickDemo", Toast.LENGTH_SHORT).show();
         }
     }
 }
