@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -41,9 +40,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    private void validatePassword(String stringEditText,String stringEditText1) {
+    private void validatePassword(String passwordEditText,String emailEditText) {
 
-        if(stringEditText.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{4,}$") && stringEditText1.matches("[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"))
+        if(passwordEditText.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{4,}$") && emailEditText.matches("[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"))
         {
             Toast.makeText(MainActivity.this, "Email and Password are match with regular expression", Toast.LENGTH_SHORT).show();
         }
