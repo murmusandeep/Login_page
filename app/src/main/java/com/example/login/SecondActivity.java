@@ -8,7 +8,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class ActivityMain extends AppCompatActivity implements View.OnClickListener {
+public class SecondActivity extends AppCompatActivity implements View.OnClickListener {
 
     Button btnLogin;
     Button btnLogin1;
@@ -55,11 +55,11 @@ public class ActivityMain extends AppCompatActivity implements View.OnClickListe
 
         if(passwordEditText.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{4,}$") && emailEditText.matches("[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"))
         {
-            Toast.makeText(ActivityMain.this, "Email and Password are match with regular expression", Toast.LENGTH_SHORT).show();
+            Toast.makeText(SecondActivity.this, "Email and Password are match with regular expression", Toast.LENGTH_SHORT).show();
         }
         else
         {
-            Toast.makeText(ActivityMain.this, "Either Email or Password are does not match with regular expression", Toast.LENGTH_SHORT).show();
+            Toast.makeText(SecondActivity.this, "Either Email or Password are does not match with regular expression", Toast.LENGTH_SHORT).show();
         }
     }
 
