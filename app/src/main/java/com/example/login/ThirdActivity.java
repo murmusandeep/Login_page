@@ -13,21 +13,30 @@ public class ThirdActivity extends AppCompatActivity {
     Button btnLogin;
     Button btnLogin1;
     Button btnLogin2;
+
+    EditText passwordFromEditText;
+    EditText emailFromEditText;
+
+    String password;
+    String email;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         btnLogin = findViewById(R.id.btn_login);
+
+
+        passwordFromEditText = (EditText) findViewById(R.id.input_password);
+        emailFromEditText = (EditText) findViewById(R.id.input_email);
+
+
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                EditText passwordFromEditText = (EditText) findViewById(R.id.input_password);
-                EditText emailFromEditText = (EditText) findViewById(R.id.input_email);
-                String password = passwordFromEditText.getText().toString();
-                String email = emailFromEditText.getText().toString();
-
+                password = passwordFromEditText.getText().toString();
+                email = emailFromEditText.getText().toString();
                 validatePassword(password,email);
 
             }
@@ -38,11 +47,8 @@ public class ThirdActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                EditText passwordFromEditText = (EditText) findViewById(R.id.input_password);
-                EditText emailFromEditText = (EditText) findViewById(R.id.input_email);
-                String password = passwordFromEditText.getText().toString();
-                String email = emailFromEditText.getText().toString();
-
+                password = passwordFromEditText.getText().toString();
+                email = emailFromEditText.getText().toString();
                 validatePassword(password,email);
 
             }
@@ -53,11 +59,8 @@ public class ThirdActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                EditText passwordFromEditText = (EditText) findViewById(R.id.input_password);
-                EditText emailFromEditText = (EditText) findViewById(R.id.input_email);
-                String password = passwordFromEditText.getText().toString();
-                String email = emailFromEditText.getText().toString();
-
+                password = passwordFromEditText.getText().toString();
+                email = emailFromEditText.getText().toString();
                 validatePassword(password,email);
 
             }
