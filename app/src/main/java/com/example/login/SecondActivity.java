@@ -8,11 +8,17 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class ActivityMain extends AppCompatActivity implements View.OnClickListener {
+public class SecondActivity extends AppCompatActivity implements View.OnClickListener {
 
     Button btnLogin;
     Button btnLogin1;
     Button btnLogin2;
+
+    EditText passwordFromEditText;
+    EditText emailFromEditText;
+
+    String password;
+    String email;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,16 +32,19 @@ public class ActivityMain extends AppCompatActivity implements View.OnClickListe
 
         btnLogin2 = findViewById(R.id.btn_login2);
         btnLogin2.setOnClickListener(this);
+
+        passwordFromEditText = (EditText) findViewById(R.id.input_password);
+        emailFromEditText = (EditText) findViewById(R.id.input_email);
+
     }
 
 
     @Override
     public void onClick(View v) {
-        EditText passwordFromEditText = (EditText) findViewById(R.id.input_password);
-        EditText emailFromEditText = (EditText) findViewById(R.id.input_email);
-        String password = passwordFromEditText.getText().toString();
-        String email = emailFromEditText.getText().toString();
 
+
+        password = passwordFromEditText.getText().toString();
+        email = emailFromEditText.getText().toString();
         validatePassword(password,email);
         switch (v.getId())
         {
@@ -55,11 +64,11 @@ public class ActivityMain extends AppCompatActivity implements View.OnClickListe
 
         if(passwordEditText.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{4,}$") && emailEditText.matches("[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"))
         {
-            Toast.makeText(ActivityMain.this, "Email and Password are match with regular expression", Toast.LENGTH_SHORT).show();
+            Toast.makeText(SecondActivity.this, "Email and Password are match with regular expression", Toast.LENGTH_SHORT).show();
         }
         else
         {
-            Toast.makeText(ActivityMain.this, "Either Email or Password are does not match with regular expression", Toast.LENGTH_SHORT).show();
+            Toast.makeText(SecondActivity.this, "Either Email or Password are does not match with regular expression", Toast.LENGTH_SHORT).show();
         }
     }
 
