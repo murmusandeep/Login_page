@@ -78,4 +78,24 @@ public class ThirdActivity extends AppCompatActivity {
             Toast.makeText(ThirdActivity.this, "Either Email or Password are does not match with regular expression", Toast.LENGTH_SHORT).show();
         }
     }
+
+    private boolean validateForm() {
+        getContext()?.apply {
+            val form = Form()
+
+            form.addField(Field(tilEFName)
+                .validate(NotEmpty(this), getString(R.string.name_required))
+                .validate(IsValidName(this), getString(R.string.name_valid)))
+
+            form.addField(Field(tilAtvEMail)
+                .validate(NotEmpty(this), getString(R.string.email_required))
+                .validate(IsEmail(this), getString(R.string.enter_valid_email)))
+
+            form.addField(Field(tilMobileNumber)
+                .validate(NotEmpty(this), getString(R.string.enter_valid_phone))
+                .validate(IsPhone(this), getString(R.string.enter_valid_phone)))
+            return form.isValid()
+        }
+        return false;
+            }
 }
